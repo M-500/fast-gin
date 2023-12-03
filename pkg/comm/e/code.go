@@ -5,3 +5,10 @@
 //@Date: 2023/12/01 22:57
 
 package e
+
+const (
+	SUCCESS          = 200
+	ERROR            = 500
+	BAD_INPUT_PARAMS = 400
+	NOT_LOGIN        = 1001
+)
