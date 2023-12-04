@@ -3,6 +3,7 @@ package db_helper
 import (
 	"fast-gin/app/config"
 	"fmt"
+	_ "github.com/go-sql-driver/mysql"
 	"log"
 	"time"
 	"xorm.io/xorm"

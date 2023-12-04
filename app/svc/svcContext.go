@@ -17,17 +17,19 @@ import (
 var svc *ServiceContext
 
 type ServiceContext struct {
-	Config    *config.Config
-	Server    *gin.Engine
-	MysqlConn *xorm.Engine
-	Trans     ut.Translator
+	Config *config.Config
+	Server *gin.Engine
+	DbConn *xorm.Engine
+	Trans  ut.Translator
 }
 
 func SetUpServiceContext(c *config.Config) *ServiceContext {
 	if svc != nil {
 		return svc
 	}
-	svc.Config = c
-	svc.MysqlConn = db_helper.GetDb()
+	svc = &ServiceContext{
+		Config: c,
+		DbConn: db_helper.GetDb(),
+	}
 	return svc
 }

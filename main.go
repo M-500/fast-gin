@@ -6,6 +6,22 @@
 
 package main
 
+import (
+	"fast-gin/app/config"
+	"fast-gin/app/svc"
+	"fast-gin/pkg/utils"
+	"flag"
+	"fmt"
+)
+
+var configFile = flag.String("f", "dev.yaml", "the config file")
+
 func main() {
 
+	utils.DisplayFastGin()
+	// 1. 初始化配置文件
+	flag.Parse()
+	serverCfg := config.MustLoadCfg(*configFile, "YML")
+	fmt.Printf(serverCfg.Name)
+	svc.SetUpServiceContext(serverCfg)
 }
