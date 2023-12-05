@@ -1,8 +1,8 @@
 package admin
 
 import (
+	"fast-gin/pkg/comm/response"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
 
 //
@@ -15,7 +15,5 @@ type UserApi struct {
 }
 
 func (*UserApi) UserInfoHandler(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{
-		"msg": "用户列表",
-	})
+	response.JsonFailData(c, "成功获取用户", "傻逼")
 }
