@@ -16,4 +16,5 @@ func (*NaApis) RegisterRouter(r *gin.Engine) {
 	group := r.Group("/na")
 	na := new(NaApis)
 	group.GET("/login", na.LoginHandler)
+	group.GET("/captcha", na.CaptchaImgAPI)
 }
