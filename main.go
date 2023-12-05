@@ -10,6 +10,7 @@ import (
 	"fast-gin/app/config"
 	"fast-gin/app/svc"
 	"fast-gin/pkg/utils"
+	"fast-gin/routers"
 	"flag"
 	"fmt"
 )
@@ -24,4 +25,7 @@ func main() {
 	serverCfg := config.MustLoadCfg(*configFile, "YML")
 	fmt.Printf(serverCfg.Name)
 	svc.SetUpServiceContext(serverCfg)
+
+	r := routers.SetUpRouters()
+	panic(r.Run(fmt.Sprintf("%s:%d", serverCfg.Host, serverCfg.Port)))
 }
