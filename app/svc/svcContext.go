@@ -2,6 +2,7 @@ package svc
 
 import (
 	"fast-gin/app/config"
+	"fast-gin/pkg/comm/validators"
 	"fast-gin/pkg/utils/db_helper"
 	"github.com/gin-gonic/gin"
 	ut "github.com/go-playground/universal-translator"
@@ -30,6 +31,7 @@ func SetUpServiceContext(c *config.Config) *ServiceContext {
 	svc = &ServiceContext{
 		Config: c,
 		DbConn: db_helper.GetDb(),
+		Trans:  validators.SetUpTrans(c.Local),
 	}
 	return svc
 }
