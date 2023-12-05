@@ -2,6 +2,7 @@ package routers
 
 import (
 	"fast-gin/app/api"
+	"fast-gin/middlewares"
 	"github.com/gin-gonic/gin"
 )
 
@@ -13,6 +14,7 @@ import (
 
 func SetUpRouters() *gin.Engine {
 	r := gin.Default()
+	r.Use(middlewares.PaginationMiddleware()) // 注册分页逻辑
 	naApis := api.APIGroupsAPP.NaApiGroups
 	naApis.RegisterRouter(r)
 	r.Use()
